@@ -22,10 +22,26 @@
       <h1 class="display-4">Weather Dashboard</h1>
     </div>
     <!-- The form -->
-    <form class="example" action="action_page.php">
-      <input type="text" placeholder="Search.." name="search" />
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
+    <div class="form-div">
+      <form class="div-data">
+        <input
+          id="search-input-text"
+          type="text"
+          placeholder="Search.."
+          name="search"
+        />
+        <button type="submit">
+          <i class="fa fa-search" id="fetch-button"></i>
+        </button>
+      </form>
+      <div id="search-history">Search History:</div>
+    </div>
+    <!-- The Search Output -->
+    <div id="main-search-output">Here is your forecast</div>
+    <!-- The 5 Day Search Output -->
+    <div id="five-day-search-output">5-Day Forecast:</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script src="app.js"></script>
   </body>
 </html>
