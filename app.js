@@ -53,6 +53,32 @@ $("document").ready(function () {
         $("#temp").text("TEMP IN K: " + data.main.temp);
         $("#humidity").text("HUMIDITY: " + data.main.humidity);
         $("#windSpeed").text("WIND SPEED: " + data.wind.speed);
+
+        var requestUrlFiveDay =
+          "http://api.openweathermap.org/data/2.5/forecast?q=" +
+          citySearchText +
+          "&appid=" +
+          apiKey;
+        console.log(requestUrlFiveDay);
+
+        fetch(requestUrlFiveDay)
+          .then(function (fiveDayResponse) {
+            return fiveDayResponse.json();
+          })
+          .then(function (dataFiveDay) {
+            console.log(dataFiveDay);
+
+            for (let i = 0; i < dataFiveDay.list.length; i++) {
+              if (dataFiveDay.list[i].dt_txt.indexOf("18:00:00") !== -1) {
+                console.log("Hello");
+                $("#fiveDayForecast").append(
+                  `
+                    <div class="example">${dataFiveDay.list[i].main.temp}</div>
+                    `
+                );
+              }
+            }
+          });
       });
   });
 
