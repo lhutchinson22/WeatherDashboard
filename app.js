@@ -8,7 +8,7 @@ $("document").ready(function () {
     console.log("search button is clicked");
 
     // grab text from input box
-    var citySearchText = cityInput.val();
+    var citySearchText = $(cityInput).val();
     console.log(citySearchText);
 
     // fetch request
@@ -18,6 +18,7 @@ $("document").ready(function () {
       citySearchText +
       "&appid=" +
       apiKey;
+    console.log(requestUrl);
 
     fetch(requestUrl)
       .then(function (response) {
