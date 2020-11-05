@@ -7,9 +7,17 @@ $("document").ready(function () {
     event.preventDefault();
     console.log("search button is clicked");
 
-    // grab text from input box
+    // grab text from input box and append to search history box
     var citySearchText = $(cityInput).val();
     console.log(citySearchText);
+
+    var citySearchArray = [];
+    citySearchArray.push(citySearchText);
+    console.log(citySearchArray);
+
+    for (var i = 0; i < citySearchArray.length; i++) {
+      $("#search-history").append(citySearchArray[i] + " " + "<br>");
+    }
 
     // fetch request
     var apiKey = "89e5c40c6fdcef655f97ee07fb64e4b1";
