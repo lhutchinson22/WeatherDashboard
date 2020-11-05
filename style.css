@@ -6,7 +6,7 @@
 }
 
 /* Style the search field */
-form.example input[type="text"] {
+form.div-data input[type="text"] {
   padding: 10px;
   margin-left: 30px;
   font-size: 17px;
@@ -17,7 +17,7 @@ form.example input[type="text"] {
 }
 
 /* Style the submit button */
-form.example button {
+form.div-data button {
   float: left;
   width: 20%;
   padding: 10px;
@@ -29,12 +29,12 @@ form.example button {
   cursor: pointer;
 }
 
-form.example button:hover {
+form.div-data button:hover {
   background: #0b7dda;
 }
 
 /* Clear floats */
-form.example::after {
+form.div-data::after {
   content: "";
   clear: both;
   display: table;
@@ -54,4 +54,15 @@ form.div-data {
   padding-top: 10px;
   padding-left: 10px;
   background-color: whitesmoke;
+}
+
+#main-search-output {
+  width: 50%;
+  float: left;
+}
+
+#five-day-search-output {
+  width: 50%;
+  height: 500px;
+  float: left;
 }
