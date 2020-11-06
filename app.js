@@ -1,22 +1,14 @@
 console.log("sanity check");
 
 $("document").ready(function () {
-  // moment.js
-  //   var now = moment().format("LLLL");
-  //   console.log(now);
-  //   currentDay.append(now);
-
-  var fetchButton = document.getElementById("fetch-button");
   var cityInput = document.getElementById("search-input-text");
-  var currentForecast = document.getElementById("main-search-output");
-  var currentForecastName = document.getElementById("forecastOutput");
 
   // get local storage
   var cityStorageArr = localStorage.getItem("city entered") || [];
   // var cityStorageArr = JSON.parse(localStorage.getItem("city entered")) || [];
 
   for (var i = 0; i < cityStorageArr.length; i++) {
-    $("#search-history").append(cityStorageArr[i]);
+    $("#search-history").append(`<div>${cityStorageArr[i]}</div>`);
   }
 
   $("#fetch-button").on("click", function (event) {
@@ -27,18 +19,17 @@ $("document").ready(function () {
     console.log(citySearchText);
     $("#forecastOutput").addClass("styleMainForecast");
 
-    // save to local storage
     var citySearchArray = [];
+    citySearchArray.push(citySearchText);
+
+    // save to local storage
     cityStorageArr.push(citySearchText);
     localStorage.setItem("city entered", JSON.stringify(cityStorageArr));
-
-    console.log(citySearchArray);
 
     for (var i = 0; i < citySearchArray.length; i++) {
       $("#search-history").append(
         `<div style="border-color: gray">${citySearchArray[i]}</div`
       );
-      //   $("#forecastOutput").append(citySearchArray[i]);
     }
 
     // fetch request
@@ -99,14 +90,9 @@ $("document").ready(function () {
                 var kelvin = dataFiveDay.list[i].main.temp;
                 var celsius = kelvin - 273;
                 var fahrenheit = Math.floor(celsius * (9 / 5) + 32);
-                var grabIcon = dataFiveDay.list[i].weather[0].icon;
-                var iconConverted =
-                  "http://openweathermap.org/img/wn/" + grabIcon + "@2x.png";
-                console.log(iconConverted);
 
                 $(arrayDays[j]).append(
                   dataFiveDay.list[i].dt_txt + "<br>",
-                  iconConverted,
                   "temp: " + fahrenheit + "&#176;" + "F" + "<br>",
                   "humidity: " + dataFiveDay.list[i].main.humidity + "<br>"
                 );
@@ -116,6 +102,22 @@ $("document").ready(function () {
           });
       });
   });
+
+  //   function getIcon(iconData) {
+  //     var grabIcon = dataFiveDay.list[i].weather[0].icon;
+  //     var iconConverted =
+  //       "http://openweathermap.org/img/wn/" + grabIcon + "@2x.png";
+  //     console.log(iconConverted);
+  //     fetch(iconConverted)
+  //       .then(function (responseIcon) {
+  //         return responseIcon.json();
+  //       })
+  //       .then(function (data) {
+  //         console.log(data);
+  //       });
+  //   }
+
+  //   console.log(getIcon());
 
   function uvIndex(lat, lon) {
     var apiKey = "89e5c40c6fdcef655f97ee07fb64e4b1";
