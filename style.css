@@ -57,18 +57,21 @@ form.div-data {
 #main-search-output {
   width: 50%;
   float: left;
+  margin-left: 50px;
 }
 
 #five-day-search-output {
-  width: 50%;
+  width: 100%;
   float: left;
+  margin-left: 50px;
 }
 .individualDays {
-  width: 150px;
-  background-color: blue;
+  width: 15%;
+  background-color: rgb(28, 153, 255);
   color: white;
   margin: 10px;
   padding-left: 20px;
+  float: left;
   /* display: inline; */
 }
 
@@ -78,4 +81,5 @@ form.div-data {
 
 #forecastOutput {
   font-size: 25px;
+  width: 500px;
 }

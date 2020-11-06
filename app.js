@@ -12,10 +12,11 @@ $("document").ready(function () {
   var currentForecastName = document.getElementById("forecastOutput");
 
   // get local storage
-  var cityStorageArr = JSON.parse(localStorage.getItem("city entered")) || [];
+  var cityStorageArr = localStorage.getItem("city entered") || [];
+  // var cityStorageArr = JSON.parse(localStorage.getItem("city entered")) || [];
 
   for (var i = 0; i < cityStorageArr.length; i++) {
-    $("#search-history").append(cityStorageArr);
+    $("#search-history").append(cityStorageArr[i]);
   }
 
   $("#fetch-button").on("click", function (event) {
@@ -25,8 +26,10 @@ $("document").ready(function () {
     var citySearchText = $(cityInput).val();
     console.log(citySearchText);
     $("#forecastOutput").addClass("styleMainForecast");
+
     // save to local storage
-    localStorage.setItem("city entered", citySearchText);
+    // localStorage.setItem("city entered", JSON.parse(cityStorageArr));
+    // cityStorageArr.push(citySearchText);
 
     var citySearchArray = [];
     citySearchArray.push(citySearchText);
@@ -91,6 +94,7 @@ $("document").ready(function () {
               if (dataFiveDay.list[i].dt_txt.indexOf("18:00:00") !== -1) {
                 console.log(i, j, arrayDays[j]);
                 $(arrayDays[j]).append(
+                  dataFiveDay.list[i].dt_txt + "<br>",
                   "temp: " + dataFiveDay.list[i].main.temp + "<br>",
                   "humidity: " + dataFiveDay.list[i].main.humidity + "<br>"
                 );
