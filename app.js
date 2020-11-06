@@ -64,9 +64,13 @@ $("document").ready(function () {
 
         uvIndex(latitude, longitude);
 
-        $("#temp").text("TEMP IN K: " + data.main.temp);
-        $("#humidity").text("HUMIDITY: " + data.main.humidity);
-        $("#windSpeed").text("WIND SPEED: " + data.wind.speed);
+        var kelvin = data.main.temp;
+        var celsius = kelvin - 273;
+        var fahrenheit = Math.floor(celsius * (9 / 5) + 32);
+
+        $("#temp").text("Temperature: " + fahrenheit + "°F");
+        $("#humidity").text("Humidity: " + data.main.humidity);
+        $("#windSpeed").text("Wind SPeed: " + data.wind.speed);
 
         var requestUrlFiveDay =
           "http://api.openweathermap.org/data/2.5/forecast?q=" +
@@ -93,9 +97,14 @@ $("document").ready(function () {
             for (let i = 0, j = 0; i < dataFiveDay.list.length; i++) {
               if (dataFiveDay.list[i].dt_txt.indexOf("18:00:00") !== -1) {
                 console.log(i, j, arrayDays[j]);
+
+                var kelvin = dataFiveDay.list[i].main.temp;
+                var celsius = kelvin - 273;
+                var fahrenheit = Math.floor(celsius * (9 / 5) + 32);
+
                 $(arrayDays[j]).append(
                   dataFiveDay.list[i].dt_txt + "<br>",
-                  "temp: " + dataFiveDay.list[i].main.temp + "<br>",
+                  "temp: " + fahrenheit + "&#176;" + "F" + "<br>",
                   "humidity: " + dataFiveDay.list[i].main.humidity + "<br>"
                 );
                 j++;

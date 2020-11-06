@@ -1,5 +1,6 @@
 body {
   font-family: "Alegreya", serif;
+  font-size: 20px;
 }
 .jumbotron {
   height: 100px;
@@ -66,7 +67,7 @@ form.div-data {
   margin-left: 50px;
 }
 .individualDays {
-  width: 15%;
+  width: 17%;
   background-color: rgb(28, 153, 255);
   color: white;
   margin: 10px;
@@ -80,6 +81,6 @@ form.div-data {
 }
 
 #forecastOutput {
-  font-size: 25px;
+  font-size: 30px;
   width: 500px;
 }
