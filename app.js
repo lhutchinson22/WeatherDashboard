@@ -11,6 +11,13 @@ $("document").ready(function () {
   var currentForecast = document.getElementById("main-search-output");
   var currentForecastName = document.getElementById("forecastOutput");
 
+  // get local storage
+  var cityStorageArr = JSON.parse(localStorage.getItem("city entered")) || [];
+
+  for (var i = 0; i < cityStorageArr.length; i++) {
+    $("#search-history").append(cityStorageArr);
+  }
+
   $("#fetch-button").on("click", function (event) {
     event.preventDefault();
 
@@ -18,6 +25,8 @@ $("document").ready(function () {
     var citySearchText = $(cityInput).val();
     console.log(citySearchText);
     $("#forecastOutput").addClass("styleMainForecast");
+    // save to local storage
+    localStorage.setItem("city entered", citySearchText);
 
     var citySearchArray = [];
     citySearchArray.push(citySearchText);
@@ -25,8 +34,10 @@ $("document").ready(function () {
     console.log(citySearchArray);
 
     for (var i = 0; i < citySearchArray.length; i++) {
-      $("#search-history").append(citySearchArray[i] + " " + "<br>");
-      $("#forecastOutput").append(citySearchArray[i]);
+      $("#search-history").append(
+        `<div style="border-color: gray">${citySearchArray[i]}</div`
+      );
+      //   $("#forecastOutput").append(citySearchArray[i]);
     }
 
     // fetch request
@@ -61,6 +72,14 @@ $("document").ready(function () {
           apiKey;
         console.log(requestUrlFiveDay);
 
+        var arrayDays = [
+          "#dayOne",
+          "#dayTwo",
+          "#dayThree",
+          "#dayFour",
+          "#dayFive",
+        ];
+
         fetch(requestUrlFiveDay)
           .then(function (fiveDayResponse) {
             return fiveDayResponse.json();
@@ -68,16 +87,14 @@ $("document").ready(function () {
           .then(function (dataFiveDay) {
             console.log(dataFiveDay);
 
-            for (let i = 0; i < dataFiveDay.list.length; i++) {
+            for (let i = 0, j = 0; i < dataFiveDay.list.length; i++) {
               if (dataFiveDay.list[i].dt_txt.indexOf("18:00:00") !== -1) {
-                $("#dayOne").append(
-                  "temp: " + dataFiveDay.list[0].main.temp + "<br>",
-                  "humidity: " + dataFiveDay.list[0].main.humidity + "<br>"
+                console.log(i, j, arrayDays[j]);
+                $(arrayDays[j]).append(
+                  "temp: " + dataFiveDay.list[i].main.temp + "<br>",
+                  "humidity: " + dataFiveDay.list[i].main.humidity + "<br>"
                 );
-                $("#dayTwo").append(
-                  "temp: " + dataFiveDay.list[1].main.temp + "<br>",
-                  "humidity: " + dataFiveDay.list[1].main.humidity + "<br>"
-                );
+                j++;
               }
             }
           });

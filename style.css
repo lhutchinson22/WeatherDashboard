@@ -51,6 +51,7 @@ form.div-data {
 #search-history {
   padding-top: 10px;
   padding-left: 10px;
+  border-color: black;
 }
 
 #main-search-output {
@@ -68,12 +69,13 @@ form.div-data {
   color: white;
   margin: 10px;
   padding-left: 20px;
+  /* display: inline; */
 }
 
 .styleMainForecast {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 #forecastOutput {
-  font-size: 30px;
+  font-size: 25px;
 }
