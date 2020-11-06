@@ -28,11 +28,9 @@ $("document").ready(function () {
     $("#forecastOutput").addClass("styleMainForecast");
 
     // save to local storage
-    // localStorage.setItem("city entered", JSON.parse(cityStorageArr));
-    // cityStorageArr.push(citySearchText);
-
     var citySearchArray = [];
-    citySearchArray.push(citySearchText);
+    cityStorageArr.push(citySearchText);
+    localStorage.setItem("city entered", JSON.stringify(cityStorageArr));
 
     console.log(citySearchArray);
 
@@ -70,7 +68,7 @@ $("document").ready(function () {
 
         $("#temp").text("Temperature: " + fahrenheit + "°F");
         $("#humidity").text("Humidity: " + data.main.humidity);
-        $("#windSpeed").text("Wind SPeed: " + data.wind.speed);
+        $("#windSpeed").text("Wind Speed: " + data.wind.speed);
 
         var requestUrlFiveDay =
           "http://api.openweathermap.org/data/2.5/forecast?q=" +
@@ -101,9 +99,14 @@ $("document").ready(function () {
                 var kelvin = dataFiveDay.list[i].main.temp;
                 var celsius = kelvin - 273;
                 var fahrenheit = Math.floor(celsius * (9 / 5) + 32);
+                var grabIcon = dataFiveDay.list[i].weather[0].icon;
+                var iconConverted =
+                  "http://openweathermap.org/img/wn/" + grabIcon + "@2x.png";
+                console.log(iconConverted);
 
                 $(arrayDays[j]).append(
                   dataFiveDay.list[i].dt_txt + "<br>",
+                  iconConverted,
                   "temp: " + fahrenheit + "&#176;" + "F" + "<br>",
                   "humidity: " + dataFiveDay.list[i].main.humidity + "<br>"
                 );
@@ -130,7 +133,11 @@ $("document").ready(function () {
       })
       .then(function (data) {
         console.log(data);
-        $("#uvIndex").text("UV INDEX: " + data.value);
+        $("#uvIndex").text("UV Index: " + data.value);
+        console.log(data.value);
+        // if (data.value <= 4) {
+        //   $("#uvIndex").addClass("greenDiv");
+        // }
       });
   }
 });

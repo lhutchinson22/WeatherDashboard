@@ -68,10 +68,12 @@ form.div-data {
 }
 .individualDays {
   width: 17%;
+  height: 175px;
   background-color: rgb(28, 153, 255);
+  border-radius: 10px;
   color: white;
   margin: 10px;
-  padding-left: 20px;
+  padding-left: 10px;
   float: left;
   /* display: inline; */
 }
