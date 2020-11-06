@@ -9,24 +9,24 @@ $("document").ready(function () {
   var fetchButton = document.getElementById("fetch-button");
   var cityInput = document.getElementById("search-input-text");
   var currentForecast = document.getElementById("main-search-output");
+  var currentForecastName = document.getElementById("forecastOutput");
 
   $("#fetch-button").on("click", function (event) {
     event.preventDefault();
-    console.log("search button is clicked");
 
-    // grab text from input box and append to search history box
+    // grab text from input box and append to search history box and search div
     var citySearchText = $(cityInput).val();
     console.log(citySearchText);
+    $("#forecastOutput").addClass("styleMainForecast");
 
     var citySearchArray = [];
     citySearchArray.push(citySearchText);
+
     console.log(citySearchArray);
 
     for (var i = 0; i < citySearchArray.length; i++) {
-      //   var createInputDiv = document.createElement("div");
-      // createInputDiv.textContent = citySearchArray[i]
-
       $("#search-history").append(citySearchArray[i] + " " + "<br>");
+      $("#forecastOutput").append(citySearchArray[i]);
     }
 
     // fetch request
@@ -70,11 +70,13 @@ $("document").ready(function () {
 
             for (let i = 0; i < dataFiveDay.list.length; i++) {
               if (dataFiveDay.list[i].dt_txt.indexOf("18:00:00") !== -1) {
-                console.log("Hello");
-                $("#fiveDayForecast").append(
-                  `
-                    <div class="example">${dataFiveDay.list[i].main.temp}</div>
-                    `
+                $("#dayOne").append(
+                  "temp: " + dataFiveDay.list[0].main.temp + "<br>",
+                  "humidity: " + dataFiveDay.list[0].main.humidity + "<br>"
+                );
+                $("#dayTwo").append(
+                  "temp: " + dataFiveDay.list[1].main.temp + "<br>",
+                  "humidity: " + dataFiveDay.list[1].main.humidity + "<br>"
                 );
               }
             }

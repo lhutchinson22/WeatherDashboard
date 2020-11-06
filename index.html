@@ -10,6 +10,10 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <!-- Load icon library -->
     <link
       rel="stylesheet"
@@ -22,33 +26,50 @@
       <h1 class="display-4">Weather Dashboard</h1>
     </div>
     <!-- The form -->
-    <div class="form-div">
-      <form class="div-data">
-        <input
-          id="search-input-text"
-          type="text"
-          placeholder="Search.."
-          name="search"
-        />
-        <button type="submit">
-          <i class="fa fa-search" id="fetch-button"></i>
-        </button>
-      </form>
-      <div id="search-history">Search History:<br /></div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-div">
+          <form class="div-data">
+            <input
+              id="search-input-text"
+              type="text"
+              placeholder="Search.."
+              name="search"
+            />
+            <button type="submit">
+              <i class="fa fa-search" id="fetch-button"></i>
+            </button>
+          </form>
+          <div id="search-history">Search History:<br /></div>
+        </div>
+      </div>
+      <!-- The Search Output -->
+      <div class="col-md-9" id="searchOutputDiv">
+        <div class="row">
+          <div id="main-search-output">
+            <p id="forecastOutput">Welcome! Here is your forecast :) <br /></p>
+            <p id="temp">Temperature:</p>
+            <p id="humidity">Humidity:</p>
+            <p id="windSpeed">Wind Speed:</p>
+            <p id="uvIndex">UV Index:</p>
+          </div>
+        </div>
+        <!-- The 5 Day Search Output -->
+        <div class="row">
+          <div class="clearfix" id="five-day-search-output">
+            <p>5-Day Forecast:</p>
+            <div id="fiveDayForecast">
+              <div class="individualDays" id="dayOne"></div>
+              <div class="individualDays" id="dayTwo"></div>
+              <div class="individualDays" id="dayThree"></div>
+              <div class="individualDays" id="dayFour"></div>
+              <div class="individualDays" id="dayFive"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- The Search Output -->
-    <div class="clearfix" id="main-search-output">
-      <p>Here is your forecast:</p>
-      <p id="temp">Temperature:</p>
-      <p id="humidity">Humidity:</p>
-      <p id="windSpeed">Wind Speed:</p>
-      <p id="uvIndex">UV Index:</p>
-    </div>
-    <!-- The 5 Day Search Output -->
-    <div id="five-day-search-output">
-      <p>5-Day Forecast:</p>
-      <div id="fiveDayForecast"></div>
-    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="app.js"></script>

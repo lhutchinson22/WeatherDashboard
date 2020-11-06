@@ -1,3 +1,6 @@
+body {
+  font-family: "Alegreya", serif;
+}
 .jumbotron {
   height: 100px;
   text-align: center;
@@ -8,18 +11,15 @@
 /* Style the search field */
 form.div-data input[type="text"] {
   padding: 10px;
-  margin-left: 30px;
   font-size: 17px;
   border: 1px solid grey;
   float: left;
-  width: 70%;
   background: #f1f1f1;
 }
 
 /* Style the submit button */
 form.div-data button {
   float: left;
-  width: 20%;
   padding: 10px;
   background: #2196f3;
   color: white;
@@ -45,15 +45,12 @@ form.div-data {
 }
 
 .form-div {
-  width: 30%;
-  height: 500px;
+  width: 100%;
   margin-left: 30px;
-  background-color: whitesmoke;
 }
 #search-history {
   padding-top: 10px;
   padding-left: 10px;
-  background-color: whitesmoke;
 }
 
 #main-search-output {
@@ -63,6 +60,20 @@ form.div-data {
 
 #five-day-search-output {
   width: 50%;
-  height: 500px;
   float: left;
+}
+.individualDays {
+  width: 150px;
+  background-color: blue;
+  color: white;
+  margin: 10px;
+  padding-left: 20px;
+}
+
+.styleMainForecast {
+  font-size: 30px;
+}
+
+#forecastOutput {
+  font-size: 30px;
 }
