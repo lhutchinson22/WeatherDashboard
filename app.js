@@ -8,11 +8,13 @@ $("document").ready(function () {
   // var cityStorageArr = JSON.parse(localStorage.getItem("city entered")) || [];
 
   for (var i = 0; i < cityStorageArr.length; i++) {
-    $("#search-history").append(`<div>${cityStorageArr[i]}</div>`);
+    $("#search-history").append(`<div><p>${cityStorageArr[i]}</p></div>`);
   }
 
   $("#fetch-button").on("click", function (event) {
     event.preventDefault();
+
+    console.log($("#citySpan").text($(cityInput).val()));
 
     // grab text from input box and append to search history box and search div
     var citySearchText = $(cityInput).val();

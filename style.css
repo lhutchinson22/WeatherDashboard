@@ -70,11 +70,11 @@ form.div-data {
 }
 .individualDays {
   width: 17%;
-  height: 175px;
+  height: 160px;
   background-color: rgb(28, 153, 255);
   border-radius: 10px;
   color: white;
-  margin: 10px;
+  margin-left: 10px;
   padding-left: 10px;
   float: left;
   /* display: inline; */
@@ -86,7 +86,7 @@ form.div-data {
 
 #forecastOutput {
   font-size: 30px;
-  width: 500px;
+  width: 700px;
 }
 
 #footer {
@@ -94,7 +94,7 @@ form.div-data {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 75px;
+  height: 80px;
   color: white;
   background-color: rgb(78, 76, 76);
   text-align: center;
