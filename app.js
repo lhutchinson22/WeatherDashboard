@@ -7,11 +7,9 @@ $("document").ready(function () {
   var cityStorageArr = localStorage.getItem("city entered") || [
     "San Francisco",
   ];
-  cityStorageStringify = JSON.stringify(cityStorageArr);
-  var cityStorageArrSplit = cityStorageStringify.split(",");
-  console.log(cityStorageArrSplit);
+  // var cityStorageArr = JSON.parse(localStorage.getItem("city entered")) || [];
 
-  for (var i = 0; i < cityStorageArrSplit.length; i++) {
+  for (var i = 0; i < cityStorageArr.length; i++) {
     $("#search-history").append(`<div>${cityStorageArr[i]}</div>`);
   }
 
@@ -30,7 +28,7 @@ $("document").ready(function () {
 
     // save to local storage
     cityStorageArr.push(citySearchText);
-    localStorage.setItem("city entered", cityStorageArr);
+    localStorage.setItem("city entered", JSON.stringify(cityStorageArr));
 
     for (var i = 0; i < citySearchArray.length; i++) {
       $("#search-history").append(`<div">${citySearchArray[i]}</div`);
