@@ -88,3 +88,15 @@ form.div-data {
   font-size: 30px;
   width: 500px;
 }
+
+#footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 75px;
+  color: white;
+  background-color: rgb(78, 76, 76);
+  text-align: center;
+  padding-top: 30px;
+}
