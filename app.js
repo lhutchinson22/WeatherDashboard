@@ -4,11 +4,15 @@ $("document").ready(function () {
   var cityInput = document.getElementById("search-input-text");
 
   // get local storage
-  var cityStorageArr = localStorage.getItem("city entered") || [];
-  // var cityStorageArr = JSON.parse(localStorage.getItem("city entered")) || [];
+  var cityStorageArr = localStorage.getItem("city entered") || [
+    "San Francisco",
+  ];
+  cityStorageStringify = JSON.stringify(cityStorageArr);
+  var cityStorageArrSplit = cityStorageStringify.split(",");
+  console.log(cityStorageArrSplit);
 
-  for (var i = 0; i < cityStorageArr.length; i++) {
-    $("#search-history").append(`<div><p>${cityStorageArr[i]}</p></div>`);
+  for (var i = 0; i < cityStorageArrSplit.length; i++) {
+    $("#search-history").append(`<div>${cityStorageArr[i]}</div>`);
   }
 
   $("#fetch-button").on("click", function (event) {
@@ -26,12 +30,10 @@ $("document").ready(function () {
 
     // save to local storage
     cityStorageArr.push(citySearchText);
-    localStorage.setItem("city entered", JSON.stringify(cityStorageArr));
+    localStorage.setItem("city entered", cityStorageArr);
 
     for (var i = 0; i < citySearchArray.length; i++) {
-      $("#search-history").append(
-        `<div style="border-color: gray">${citySearchArray[i]}</div`
-      );
+      $("#search-history").append(`<div">${citySearchArray[i]}</div`);
     }
 
     // fetch request
