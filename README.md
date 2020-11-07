@@ -1,3 +1,3 @@
 # WeatherDashboard
 
-<img src="WeatherDashboard.png">
+<img src="WeaterDashboard.png" alt="workdayScheduler">
