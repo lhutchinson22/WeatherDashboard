@@ -3,11 +3,29 @@ console.log("sanity check");
 $("document").ready(function () {
   var cityInput = document.getElementById("search-input-text");
 
+  var addToLocalStorageArray = function (name, value) {
+    // Get the existing data
+    var existing = localStorage.getItem(name);
+    // If no existing data, create an array
+    // Otherwise, convert the localStorage string to an array
+    existing = existing ? existing.split(",") : [];
+    // Add new data to localStorage Array
+    existing.push(value);
+    // Save back to localStorage
+    localStorage.setItem(name, existing.toString());
+  };
+
   // get local storage
-  var cityStorageArr = localStorage.getItem("city entered") || [
-    "San Francisco",
-  ];
-  // var cityStorageArr = JSON.parse(localStorage.getItem("city entered")) || [];
+  var cityStorageArr = ["San Francisco"];
+  //   var cityStorageArr = localStorage.getItem("city entered").split(",");
+  console.log(typeof cityStorageArr);
+
+  // save to local storage
+  //   localStorage.setItem("city entered", cityStorageArr);
+
+  //   cityStorageArr.push(localStorage.getItem("city entered"));
+
+  var citySearchArray = [];
 
   for (var i = 0; i < cityStorageArr.length; i++) {
     $("#search-history").append(`<div>${cityStorageArr[i]}</div>`);
@@ -15,7 +33,7 @@ $("document").ready(function () {
 
   $("#fetch-button").on("click", function (event) {
     event.preventDefault();
-
+    console.log("clicked");
     console.log($("#citySpan").text($(cityInput).val()));
 
     // grab text from input box and append to search history box and search div
@@ -23,15 +41,15 @@ $("document").ready(function () {
     console.log(citySearchText);
     $("#forecastOutput").addClass("styleMainForecast");
 
-    var citySearchArray = [];
     citySearchArray.push(citySearchText);
-
-    // save to local storage
-    cityStorageArr.push(citySearchText);
-    localStorage.setItem("city entered", JSON.stringify(cityStorageArr));
+    addToLocalStorageArray("city entered", citySearchText);
+    $("#search-history").text("");
 
     for (var i = 0; i < citySearchArray.length; i++) {
-      $("#search-history").append(`<div">${citySearchArray[i]}</div`);
+      $("#search-history").append(`
+      <div">${citySearchArray[i]}</div>
+      <br>
+      `);
     }
 
     // fetch request
