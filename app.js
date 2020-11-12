@@ -20,11 +20,6 @@ $("document").ready(function () {
   //   var cityStorageArr = localStorage.getItem("city entered").split(",");
   console.log(typeof cityStorageArr);
 
-  // save to local storage
-  //   localStorage.setItem("city entered", cityStorageArr);
-
-  //   cityStorageArr.push(localStorage.getItem("city entered"));
-
   var citySearchArray = [];
 
   for (var i = 0; i < cityStorageArr.length; i++) {
@@ -110,9 +105,14 @@ $("document").ready(function () {
                 var kelvin = dataFiveDay.list[i].main.temp;
                 var celsius = kelvin - 273;
                 var fahrenheit = Math.floor(celsius * (9 / 5) + 32);
+                var grabIcon = dataFiveDay.list[i].weather[0].icon;
+                var iconConverted =
+                  "http://openweathermap.org/img/wn/" + grabIcon + "@2x.png";
+                var icon = $("<img>").attr("src", iconConverted);
 
                 $(arrayDays[j]).append(
                   dataFiveDay.list[i].dt_txt + "<br>",
+                  icon,
                   "temp: " + fahrenheit + "&#176;" + "F" + "<br>",
                   "humidity: " + dataFiveDay.list[i].main.humidity + "<br>"
                 );
